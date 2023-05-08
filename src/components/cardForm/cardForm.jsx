@@ -6,26 +6,30 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-
-export default function UsersForm({name,age,date,id}) {
+export default function UsersForm(props) {
+  const { users } = props;
   return (
     <>
-    {
-        usuarios.map(user => (
-            <Card sx={{ maxWidth: 345 }}>
-            <CardMedia sx={{ height: 300 }} image="logo512.png" />
+      {users.map((user) => (
+        <div key={user.id}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardMedia
+              sx={{ height: 200 , width: 200, alignContent: 'center' }}
+              image="logo192.png"
+            />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 {user.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Age: {user.age} , Inscription date: {user.date} , id: {user.id}
+                Age: {user.age}
+                <br />
+                Inscription date: {user.date.toString()}
               </Typography>
             </CardContent>
           </Card>
-        ))
-    }
-      
+        </div>
+      ))}
     </>
   );
 }
