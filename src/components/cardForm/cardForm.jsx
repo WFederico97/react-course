@@ -1,9 +1,7 @@
 import React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 export default function UsersForm(props) {
@@ -12,9 +10,9 @@ export default function UsersForm(props) {
     <>
       {users.map((user) => (
         <div key={user.id}>
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{ maxWidth: 600 }} className="userCard">
             <CardMedia
-              sx={{ height: 200 , width: 200, alignContent: 'center' }}
+              sx={{ height: 200 , width: 400, alignContent: 'center' }}
               image="logo192.png"
             />
             <CardContent>
