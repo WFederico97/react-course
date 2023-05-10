@@ -1,10 +1,12 @@
-
+import React , {useState} from 'react';
 import './App.css';
 import UserForm from './components/cardForm/cardForm';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 function App() {
-  const users = [
+  const [updateArray, setUpdatedArray] = useState(false)
+  let users = [
     {
       id: 0,
       name: "John Doe",
@@ -25,19 +27,33 @@ function App() {
     },
     {
       id: 3,
-      name: "Charles Vane	",
+      name: "Charles Vane",
       age: 31,
       date: new Date(2023, 2, 12)
     }
   ];
   let quitarUltimoUser = () => {
-    users.pop();
+   
+    setUpdatedArray(users.pop())
+    console.log("Usuario eliminado: " + updateArray)
+    console.log(users)
+    
+  }
+
+  let reiniciar = () => {
+    setUpdatedArray(users);
     console.log(users)
   }
+
+
   return (
     <div className="App">
       <UserForm users={users} />
-      <Button variant='outlined' onClick={quitarUltimoUser()}>Quitar el ultimo usuario</Button>
+      <Stack>
+      <Button variant='outlined' onClick={quitarUltimoUser}>Quitar el ultimo usuario</Button>
+      <Button variant='outlined'onClick={reiniciar} >Reiniciar</Button>
+      </Stack>
+
     </div>
   );
 }
