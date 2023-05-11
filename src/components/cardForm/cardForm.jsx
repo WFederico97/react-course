@@ -8,6 +8,14 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function ListaDeGastos(props) {
   const { gastos } = props;
+  const [gasto, setGasto] = useState([]);
+
+  const eliminarGastoUnico = (id) => {
+    const newGastos = gastos.filter( gastos => gastos.id !== id);
+    setGasto(newGastos);
+    console.log(newGastos);
+  }
+
   return (
     <>
       {gastos.map((gasto) => (
@@ -65,7 +73,7 @@ export default function ListaDeGastos(props) {
               >
                 <Typography variant="h4" color="white"   >
                   $ {gasto.price}
-                  <Button>
+                  <Button onClick={ () => eliminarGastoUnico(gasto.id)}>
                     <DeleteForeverIcon  sx={{fontSize:40, color: red[500]}} />
                   </Button>
                 </Typography>

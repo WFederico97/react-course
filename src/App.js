@@ -33,18 +33,19 @@ function App() {
       date: new Date(2023, 2, 12)
     }
   ];
-  // let quitarUltimoUser = () => {
 
-  //   setUpdatedArray(gastos.pop())
-  //   console.log("Usuario eliminado: " + updateArray)
-  //   console.log(gastos)
+  const [gasto, setGasto] = useState(gastos);
 
-  // }
+  let quitarUltimoGasto = () =>{
+    setGasto(gastos.pop())
+    console.log(gasto)
+    console.log(gastos)
+  }
 
-  // let reiniciar = () => {
-  //   setUpdatedArray(gastos);
-  //   console.log(gastos)
-  // }
+   let reiniciar = () => {
+     setGasto(gastos);
+     console.log(gastos)
+   }
 
 
   return (
@@ -60,8 +61,8 @@ function App() {
         <Grid item xs={12} md={12}>
           <UserForm gastos={gastos} />
           <Stack spacing={2}>
-            <Button variant='contained' color='error'  >Quitar el ultimo gasto</Button>
-            <Button variant='contained'  >Reiniciar control de gastos</Button>
+            <Button variant='contained' color='error' onClick={quitarUltimoGasto} >Quitar el ultimo gasto</Button>
+            <Button variant='contained' onClick={reiniciar}  >Recargar control de gastos</Button>
           </Stack>
         </Grid>
       </Grid>
